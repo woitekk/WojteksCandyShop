@@ -13,11 +13,27 @@ namespace WojteksCandyShop
         public string email;
 
         public int numberOfHoursWorked;
-        public int wage;
-        public int hourlyRate;
+        public double wage;
+        public double hourlyRate;
         const int minimalWorkedHoursUnit = 1;
 
         public DateTime birthDay;
+
+        //Second constractor
+        public Employee(string first, string last, string mail, DateTime bD) : this(first, last, mail, bD, 0) 
+        { 
+
+        }
+
+        //Main constructor
+        public Employee(string first, string last, string mail, DateTime bD, double rate)
+        {
+            firstName = first;
+            lastName = last;
+            email = mail;
+            birthDay = bD;
+            hourlyRate = rate;
+        }
 
         public void PerformWork()
         {
@@ -39,8 +55,8 @@ namespace WojteksCandyShop
         }
         public void DisplayEmployeeDetails()
         {
-            Console.WriteLine($"\nFirst name: \t{firstName}\nLast name: \t{lastName}\nEmail: \t{email}" +
-                $"\nBirthday: \t{birthDay.ToShortDateString()}");
+            Console.WriteLine($"First name: \t{firstName}\nLast name: \t{lastName}\nEmail: \t\t{email}" +
+                $"\nBirthday: \t{birthDay.ToShortDateString()}\n");
         }
     }
 }
