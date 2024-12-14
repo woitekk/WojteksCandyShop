@@ -21,6 +21,16 @@ testEmployee.firstName = "Bolek";
 wojtek.DisplayEmployeeDetails();
 testEmployee.DisplayEmployeeDetails();
 
+wojtek.PerformWork(25);
+
+int minimumBonus = 100;
+//int receivedBonus = wojtek.CalculateBonus(minimumBonus);
+//Console.WriteLine($"Minimalny bonus to {minimumBonus}, a {wojtek.firstName} otrzymał(a) bonus w wysokości {receivedBonus}.");
+
+int bonusTax;
+int receivedBonus = wojtek.CalculateBonusAndBonusTax(minimumBonus, out bonusTax);
+Console.WriteLine($"The minimum bonus is {minimumBonus}, the bonus tax is {bonusTax}. {wojtek.firstName} received bonus is {receivedBonus}");
+
 //wojtek.DisplayEmployeeDetails();
 
 //wojtek.PerformWork();
