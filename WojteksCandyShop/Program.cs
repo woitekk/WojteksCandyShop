@@ -14,7 +14,7 @@ using WojteksCandyShop;
 Console.WriteLine("Creating employee");
 Console.WriteLine("-----------------\n");
 
-Employee wojtek = new Employee("Wojtek", "Komowski", "test@test.pl", new DateTime(1982, 1, 7), 150);
+Employee wojtek = new Employee("Wojtek", "Komowski", "test@test.pl", new DateTime(1982, 1, 7), 150, EmployeeType.Manager);
 
 string wojtekAsJson = wojtek.ConvertToJson();
 Console.WriteLine(wojtekAsJson);
@@ -66,8 +66,10 @@ Console.WriteLine(list);
 
 //double receivedWage = wojtek.ReceiveWage(true);
 
-//var gosia = new Employee("Gosia", "Mlodawska", "lufa@lufa.pl", new DateTime(1988, 6, 15), 120);
-//Employee basia = new("Basia", "Nowak", "mail@goo.com", new DateTime(1978, 7, 22), 180);
+var gosia = new Employee("Gosia", "Mlodawska", "lufa@lufa.pl", new DateTime(1988, 6, 15), 120, EmployeeType.Research);
+Employee basia = new("Basia", "Nowak", "mail@goo.com", new DateTime(1978, 7, 22), 180, EmployeeType.StoreManager);
+
+
 
 //gosia.DisplayEmployeeDetails();
 //basia.DisplayEmployeeDetails();
@@ -76,3 +78,8 @@ Console.WriteLine(list);
 //var newB = basia.firstName;
 
 //Console.WriteLine($"Prawidłowe imię Basi to {newB}.");
+
+WorkTask task;
+task.description = "Ciastka owsiane";
+task.hours = 2;
+task.PerformWorkTask();

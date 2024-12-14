@@ -15,20 +15,23 @@ namespace WojteksCandyShop
 
         public DateTime birthDay;
 
+        public EmployeeType employeeType;
+
         //Second constractor
-        public Employee(string first, string last, string mail, DateTime bD) : this(first, last, mail, bD, 0) 
+        public Employee(string first, string last, string mail, DateTime bD) : this(first, last, mail, bD, 0, EmployeeType.StoreManager) 
         { 
 
         }
 
         //Main constructor
-        public Employee(string first, string last, string mail, DateTime bD, double rate)
+        public Employee(string first, string last, string mail, DateTime bD, double rate, EmployeeType empType)
         {
             firstName = first;
             lastName = last;
             email = mail;
             birthDay = bD;
             hourlyRate = rate;
+            employeeType = empType;
         }
 
         public void PerformWork()
@@ -87,7 +90,16 @@ namespace WojteksCandyShop
         }
         public double ReceiveWage(bool resetHours = true)
         {
-            wage = numberOfHoursWorked * hourlyRate;
+            if(employeeType == EmployeeType.Manager)
+            {
+                wage = numberOfHoursWorked * hourlyRate * 1.5;
+                Console.WriteLine($"An extra was added since {firstName} is a manager.");
+            }
+            else
+            {
+                wage = numberOfHoursWorked * hourlyRate;
+            }
+          
             Console.WriteLine($"{firstName} {lastName} has received a wage of {wage} for {numberOfHoursWorked} hour(s) worked.");
             if(resetHours)
                 numberOfHoursWorked = 0;
