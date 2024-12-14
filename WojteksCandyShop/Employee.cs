@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace WojteksCandyShop
 {
@@ -82,6 +78,12 @@ namespace WojteksCandyShop
 
             Console.WriteLine($"Pracownik otrzymał bonus w wysokości {bonus}, podatek od bonusu wynisół {bonusTax}.");
             return bonus;
+        }
+
+        public string ConvertToJson()
+        {
+            string json = JsonConvert.SerializeObject(this);
+            return json;
         }
         public double ReceiveWage(bool resetHours = true)
         {

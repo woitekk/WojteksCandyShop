@@ -1,4 +1,5 @@
 ﻿
+using System.Text;
 using WojteksCandyShop;
 
 //int a = 42;
@@ -15,21 +16,45 @@ Console.WriteLine("-----------------\n");
 
 Employee wojtek = new Employee("Wojtek", "Komowski", "test@test.pl", new DateTime(1982, 1, 7), 150);
 
-var testEmployee = wojtek;
-testEmployee.firstName = "Bolek";
+string wojtekAsJson = wojtek.ConvertToJson();
+Console.WriteLine(wojtekAsJson);
 
-wojtek.DisplayEmployeeDetails();
-testEmployee.DisplayEmployeeDetails();
+//var testEmployee = wojtek;
+//testEmployee.firstName = "Bolek";
 
-wojtek.PerformWork(25);
+//wojtek.DisplayEmployeeDetails();
+//testEmployee.DisplayEmployeeDetails();
 
-int minimumBonus = 100;
+//wojtek.PerformWork(25);
+
+//int minimumBonus = 100;
 //int receivedBonus = wojtek.CalculateBonus(minimumBonus);
 //Console.WriteLine($"Minimalny bonus to {minimumBonus}, a {wojtek.firstName} otrzymał(a) bonus w wysokości {receivedBonus}.");
 
-int bonusTax;
-int receivedBonus = wojtek.CalculateBonusAndBonusTax(minimumBonus, out bonusTax);
-Console.WriteLine($"The minimum bonus is {minimumBonus}, the bonus tax is {bonusTax}. {wojtek.firstName} received bonus is {receivedBonus}");
+//int bonusTax;
+//int receivedBonus = wojtek.CalculateBonusAndBonusTax(minimumBonus, out bonusTax);
+//Console.WriteLine($"The minimum bonus is {minimumBonus}, the bonus tax is {bonusTax}. {wojtek.firstName} received bonus is {receivedBonus}");
+
+/* String builder */
+StringBuilder builder = new StringBuilder();
+
+builder.Append("Last name: ");
+builder.AppendLine(wojtek.lastName);
+builder.Append("First name: ");
+builder.AppendLine(wojtek.firstName);
+string employeeInfo = builder.ToString();
+Console.WriteLine(employeeInfo);
+
+StringBuilder builder2 = new StringBuilder();
+
+for(int i = 0; i < 15; i++)
+{
+    builder2.Append(i);
+    builder2.Append(", ");
+}
+
+string list = builder2.ToString();
+Console.WriteLine(list);
 
 //wojtek.DisplayEmployeeDetails();
 
