@@ -79,7 +79,18 @@ Employee basia = new("Basia", "Nowak", "mail@goo.com", new DateTime(1978, 7, 22)
 
 //Console.WriteLine($"Prawidłowe imię Basi to {newB}.");
 
-WorkTask task;
-task.description = "Ciastka owsiane";
-task.hours = 2;
-task.PerformWorkTask();
+//WorkTask task;
+//task.description = "Ciastka owsiane";
+//task.hours = 2;
+//task.PerformWorkTask();
+
+#region First Run Wojtek
+
+wojtek.PerformWork();
+wojtek.PerformWork(5);
+wojtek.PerformWork();
+wojtek.ReceiveWage();
+wojtek.DisplayEmployeeDetails();
+
+#endregion
+

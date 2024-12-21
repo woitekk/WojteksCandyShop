@@ -17,6 +17,8 @@ namespace WojteksCandyShop
 
         public EmployeeType employeeType;
 
+        public static double taxRate = 0.15;
+
         //Second constractor
         public Employee(string first, string last, string mail, DateTime bD) : this(first, last, mail, bD, 0, EmployeeType.StoreManager) 
         { 
@@ -90,15 +92,21 @@ namespace WojteksCandyShop
         }
         public double ReceiveWage(bool resetHours = true)
         {
+            double wageBeforTax = 0.0;
+
             if(employeeType == EmployeeType.Manager)
             {
-                wage = numberOfHoursWorked * hourlyRate * 1.5;
+                wageBeforTax = numberOfHoursWorked * hourlyRate * 1.25;
                 Console.WriteLine($"An extra was added since {firstName} is a manager.");
             }
             else
             {
-                wage = numberOfHoursWorked * hourlyRate;
+                wageBeforTax = numberOfHoursWorked * hourlyRate;
             }
+
+            double taxAmount = wageBeforTax * taxRate;
+            wage = wageBeforTax - taxAmount;
+
           
             Console.WriteLine($"{firstName} {lastName} has received a wage of {wage} for {numberOfHoursWorked} hour(s) worked.");
             if(resetHours)
@@ -109,7 +117,7 @@ namespace WojteksCandyShop
         public void DisplayEmployeeDetails()
         {
             Console.WriteLine($"First name: \t{firstName}\nLast name: \t{lastName}\nEmail: \t\t{email}" +
-                $"\nBirthday: \t{birthDay.ToShortDateString()}\n");
+                $"\nBirthday: \t{birthDay.ToShortDateString()}\nTax rate: \t{taxRate}.");
         }
     }
 }
