@@ -10,7 +10,7 @@ namespace WojteksCandyShop
 
         public int numberOfHoursWorked;
         public double wage;
-        public double hourlyRate;
+        public double? hourlyRate;
         const int minimalWorkedHoursUnit = 1;
 
         public DateTime birthDay;
@@ -26,13 +26,13 @@ namespace WojteksCandyShop
         }
 
         //Main constructor
-        public Employee(string first, string last, string mail, DateTime bD, double rate, EmployeeType empType)
+        public Employee(string first, string last, string mail, DateTime bD, double? rate, EmployeeType empType)
         {
             firstName = first;
             lastName = last;
             email = mail;
             birthDay = bD;
-            hourlyRate = rate;
+            hourlyRate = rate ?? 10;
             employeeType = empType;
         }
 
@@ -96,12 +96,12 @@ namespace WojteksCandyShop
 
             if(employeeType == EmployeeType.Manager)
             {
-                wageBeforTax = numberOfHoursWorked * hourlyRate * 1.25;
+                wageBeforTax = numberOfHoursWorked * hourlyRate.Value * 1.25;
                 Console.WriteLine($"An extra was added since {firstName} is a manager.");
             }
             else
             {
-                wageBeforTax = numberOfHoursWorked * hourlyRate;
+                wageBeforTax = numberOfHoursWorked * hourlyRate.Value;
             }
 
             double taxAmount = wageBeforTax * taxRate;
