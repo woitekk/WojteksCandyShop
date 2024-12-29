@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using BethanysPieShopHRM.Logic;
+using Newtonsoft.Json;
 
-namespace WojteksCandyShop
+namespace WojteksCandyShop.HR
 {
     internal class Employee
     {
@@ -20,8 +21,8 @@ namespace WojteksCandyShop
         public static double taxRate = 0.15;
 
         //Second constractor
-        public Employee(string first, string last, string mail, DateTime bD) : this(first, last, mail, bD, 0, EmployeeType.StoreManager) 
-        { 
+        public Employee(string first, string last, string mail, DateTime bD) : this(first, last, mail, bD, 0, EmployeeType.StoreManager)
+        {
 
         }
 
@@ -85,6 +86,13 @@ namespace WojteksCandyShop
             return bonus;
         }
 
+        public double CalculateWage()
+        {
+            WageCalculations wageCalculations = new WageCalculations();
+            double calculatedValue = wageCalculations.ComplexWageCalculation(wage, taxRate, 3, 42);
+            return calculatedValue;
+        }
+
         public string ConvertToJson()
         {
             string json = JsonConvert.SerializeObject(this);
@@ -94,7 +102,7 @@ namespace WojteksCandyShop
         {
             double wageBeforTax = 0.0;
 
-            if(employeeType == EmployeeType.Manager)
+            if (employeeType == EmployeeType.Manager)
             {
                 wageBeforTax = numberOfHoursWorked * hourlyRate.Value * 1.25;
                 Console.WriteLine($"An extra was added since {firstName} is a manager.");
@@ -107,9 +115,9 @@ namespace WojteksCandyShop
             double taxAmount = wageBeforTax * taxRate;
             wage = wageBeforTax - taxAmount;
 
-          
+
             Console.WriteLine($"{firstName} {lastName} has received a wage of {wage} for {numberOfHoursWorked} hour(s) worked.");
-            if(resetHours)
+            if (resetHours)
                 numberOfHoursWorked = 0;
 
             return wage;

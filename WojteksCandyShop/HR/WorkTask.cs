@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WojteksCandyShop
+namespace WojteksCandyShop.HR
 {
     internal struct WorkTask
     {

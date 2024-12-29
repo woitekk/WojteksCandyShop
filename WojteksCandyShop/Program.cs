@@ -1,6 +1,7 @@
 ﻿
 using System.Text;
-using WojteksCandyShop;
+using WojteksCandyShop.Accounting;
+using WojteksCandyShop.HR;
 
 //int a = 42;
 //int aCopy = a;
@@ -94,3 +95,9 @@ wojtek.DisplayEmployeeDetails();
 
 #endregion
 
+//Creating customer
+Customer customer = new Customer();
+
+customer.Name = "Bozena";
+
+wojtek.CalculateWage();
