@@ -95,9 +95,24 @@ wojtek.DisplayEmployeeDetails();
 
 #endregion
 
-//Creating customer
-Customer customer = new Customer();
+//Arrays
+int[] sampleArray1 = new int[5];
 
-customer.Name = "Bozena";
+int[] sampleArray2 = new int[] { 1, 2, 3, 4, 5, };
 
-wojtek.CalculateWage();
+Console.WriteLine("Podaj liczbę pracowników do rejestracji.");
+int lenght = int.Parse(Console.ReadLine());
+
+int[] employeeIds = new int[lenght];
+
+for (int i = 0; i < lenght; i++)
+{
+    Console.WriteLine($"Podaj id {i + 1} pracownika.");
+    int id = int.Parse(Console.ReadLine());
+    employeeIds[i] = id;
+}
+
+for(int i = 0; i < employeeIds.Length; i++)
+{
+    Console.WriteLine($"ID {i + 1}: \t{employeeIds[i]}");
+}
