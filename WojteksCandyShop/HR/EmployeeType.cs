@@ -8,7 +8,7 @@ namespace WojteksCandyShop.HR
 {
     enum EmployeeType
     {
-        Slaes,
+        Sales,
         Manager,
         Research,
         StoreManager
