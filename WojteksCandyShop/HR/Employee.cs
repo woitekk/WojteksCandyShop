@@ -125,7 +125,7 @@ namespace WojteksCandyShop.HR
         public void DisplayEmployeeDetails()
         {
             Console.WriteLine($"First name: \t{firstName}\nLast name: \t{lastName}\nEmail: \t\t{email}" +
-                $"\nBirthday: \t{birthDay.ToShortDateString()}\nTax rate: \t{taxRate}.");
+                $"\nBirthday: \t{birthDay.ToShortDateString()}\nTax rate: \t{taxRate}.\n");
         }
     }
 }

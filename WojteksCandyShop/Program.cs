@@ -69,7 +69,9 @@ Console.WriteLine(list);
 
 var gosia = new Employee("Gosia", "Mlodawska", "lufa@lufa.pl", new DateTime(1988, 6, 15), 120, EmployeeType.Research);
 Employee basia = new("Basia", "Nowak", "mail@goo.com", new DateTime(1978, 7, 22), 180, EmployeeType.StoreManager);
-
+Employee krzysztof = new("Krzysztof", "Nowakowski", "mail@ktiorego.niema", new DateTime(1982, 3, 29), 180, EmployeeType.Research);
+Employee mieczyslaw = new("Mieczyslaw", "Nowawski", "mail45@ktiorego.niema", new DateTime(1987, 3, 29), null, EmployeeType.Sales);
+Employee kasia = new("Katarzyna", "Noski", "mail6543@ktiorego.niema", new DateTime(1992, 3, 15), null, EmployeeType.Sales);
 
 
 //gosia.DisplayEmployeeDetails();
@@ -96,6 +98,8 @@ wojtek.DisplayEmployeeDetails();
 #endregion
 
 //Arrays
+
+// Integer arrays
 int[] sampleArray1 = new int[5];
 
 int[] sampleArray2 = new int[] { 1, 2, 3, 4, 5, };
@@ -112,7 +116,27 @@ for (int i = 0; i < lenght; i++)
     employeeIds[i] = id;
 }
 
-for(int i = 0; i < employeeIds.Length; i++)
+for (int i = 0; i < employeeIds.Length; i++)
 {
     Console.WriteLine($"ID {i + 1}: \t{employeeIds[i]}");
 }
+
+Array.Sort(employeeIds);
+Console.WriteLine("Po posortowaniu:");
+for (int i = 0; i < employeeIds.Length; i++)
+{
+    Console.WriteLine($"ID {i + 1}: \t{employeeIds[i]}");
+}
+
+
+//Array from methods
+//Employee[] employess = new Employee[5];
+//employess[0] = gosia; employess[1] = basia;  employess[2] = krzysztof; employess[3] =  mieczyslaw; employess[4] =  kasia;
+
+//foreach(Employee e in employess)
+//{
+//    e.DisplayEmployeeDetails();
+//    var numberOfHoursWorked = new Random().Next(30);
+//    e.PerformWork(numberOfHoursWorked);
+//    e.ReceiveWage();
+//}
