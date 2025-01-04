@@ -23,27 +23,15 @@ namespace WojteksCandyShop.HR
         //Properites
         public string FirstName
         {
-            get { return firstName; }
-            set
-            {
-                firstName = value;
-            }
+            get; set;
         }
         public string LastName
         {
-            get { return lastName;}
-            set
-            {
-                lastName = value;
-            }
+            get; set;
         }
         public string Email
         {
-            get { return email;}
-            set
-            {
-                email = value;
-            }
+            get; set;
         }
         public int NumberOfHoursWorked
         {
@@ -78,19 +66,11 @@ namespace WojteksCandyShop.HR
         }
         public DateTime BirthDay
         {
-            get { return birthDay; }
-            set
-            {
-                birthDay = value;
-            }
+            get; set;
         }
         public EmployeeType EmployeeType
         {
-            get { return employeeType; }
-            set
-            {
-                employeeType = value;
-            }
+            get; set;
         }
         // End setitng properties
         //Second constractor
