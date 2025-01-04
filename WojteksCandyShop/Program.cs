@@ -40,9 +40,9 @@ Console.WriteLine(wojtekAsJson);
 StringBuilder builder = new StringBuilder();
 
 builder.Append("Last name: ");
-builder.AppendLine(wojtek.lastName);
+builder.AppendLine(wojtek.LastName);
 builder.Append("First name: ");
-builder.AppendLine(wojtek.firstName);
+builder.AppendLine(wojtek.FirstName);
 string employeeInfo = builder.ToString();
 Console.WriteLine(employeeInfo);
 
