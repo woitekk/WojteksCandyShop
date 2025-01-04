@@ -72,7 +72,7 @@ Employee basia = new("Basia", "Nowak", "mail@goo.com", new DateTime(1978, 7, 22)
 Employee krzysztof = new("Krzysztof", "Nowakowski", "mail@ktiorego.niema", new DateTime(1982, 3, 29), 180, EmployeeType.Research);
 Employee mieczyslaw = new("Mieczyslaw", "Nowawski", "mail45@ktiorego.niema", new DateTime(1987, 3, 29), null, EmployeeType.Sales);
 Employee kasia = new("Katarzyna", "Noski", "mail6543@ktiorego.niema", new DateTime(1992, 3, 15), null, EmployeeType.Sales);
-
+Employee wladek = new("Władysław", "Noski", "mail65ff43@ktiorego.niema", new DateTime(1988, 6, 14), null, EmployeeType.Sales);
 
 //gosia.DisplayEmployeeDetails();
 //basia.DisplayEmployeeDetails();
@@ -195,7 +195,8 @@ employees.Insert(0, kasia);
 employees.Add(mieczyslaw);
 employees.Add(basia);
 employees.Add(gosia);
-employees.Add(krzysztof);
+employees.Add(krzysztof);   
+employees.Add(wladek);
 
 foreach(Employee e in employees)
 {
