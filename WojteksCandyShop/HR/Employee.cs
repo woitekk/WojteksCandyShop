@@ -5,36 +5,110 @@ namespace WojteksCandyShop.HR
 {
     internal class Employee
     {
-        public string firstName;
-        public string lastName;
-        public string email;
+        private string firstName;
+        private string lastName;
+        private string email;
 
-        public int numberOfHoursWorked;
-        public double wage;
-        public double? hourlyRate;
+        private int numberOfHoursWorked;
+        private double wage;
+        private double? hourlyRate;
         const int minimalWorkedHoursUnit = 1;
 
-        public DateTime birthDay;
+        private DateTime birthDay;
 
-        public EmployeeType employeeType;
+        private EmployeeType employeeType;
 
         public static double taxRate = 0.15;
 
+        //Properites
+        public string FirstName
+        {
+            get { return firstName; }
+            set
+            {
+                firstName = value;
+            }
+        }
+        public string LastName
+        {
+            get { return lastName;}
+            set
+            {
+                lastName = value;
+            }
+        }
+        public string Email
+        {
+            get { return email;}
+            set
+            {
+                email = value;
+            }
+        }
+        public int NumberOfHoursWorked
+        {
+            get { return numberOfHoursWorked; }
+            private set
+            {
+                numberOfHoursWorked = value;
+            }
+        }
+        public double Wage
+        {
+            get { return wage;}
+            private set
+            {
+                wage = value;
+            }
+        }
+        public double? HourlyRate
+        {
+            get { return hourlyRate; }
+            set
+            {
+                if (hourlyRate < 0) 
+                { 
+                    hourlyRate = 0;
+                }
+                else
+                {
+                    hourlyRate = value;
+                }
+            }
+        }
+        public DateTime BirthDay
+        {
+            get { return birthDay; }
+            set
+            {
+                birthDay = value;
+            }
+        }
+        public EmployeeType EmployeeType
+        {
+            get { return employeeType; }
+            set
+            {
+                employeeType = value;
+            }
+        }
+        // End setitng properties
         //Second constractor
-        public Employee(string first, string last, string mail, DateTime bD) : this(first, last, mail, bD, 0, EmployeeType.StoreManager)
+        public Employee(string firstName, string lastName, string email, DateTime birthDay) 
+            : this(firstName, lastName, email, birthDay, 0, EmployeeType.StoreManager)
         {
 
         }
 
         //Main constructor
-        public Employee(string first, string last, string mail, DateTime bD, double? rate, EmployeeType empType)
+        public Employee(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate, EmployeeType employeeType)
         {
-            firstName = first;
-            lastName = last;
-            email = mail;
-            birthDay = bD;
-            hourlyRate = rate ?? 10;
-            employeeType = empType;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            BirthDay = birthDay;
+            HourlyRate = hourlyRate ?? 10;
+            EmployeeType = employeeType;
         }
 
         public void PerformWork()
@@ -43,13 +117,13 @@ namespace WojteksCandyShop.HR
         }
         public void PerformWork(int numberOfHours)
         {
-            numberOfHoursWorked += numberOfHours;
-            Console.WriteLine($"{firstName} {lastName} has worked for {numberOfHours} hour(s).");
+            NumberOfHoursWorked += numberOfHours;
+            Console.WriteLine($"{FirstName} {LastName} has worked for {numberOfHours} hour(s).");
         }
 
         public int CalculateBonus(int bonus)
         {
-            if (numberOfHoursWorked > 10)
+            if (NumberOfHoursWorked > 10)
                 bonus *= 2;
 
             Console.WriteLine($"Pracownik otrzymał bonus w wysokości {bonus}.");
@@ -73,7 +147,7 @@ namespace WojteksCandyShop.HR
         public int CalculateBonusAndBonusTax(int bonus, out int bonusTax)
         {
             bonusTax = 0;
-            if (numberOfHoursWorked > 10)
+            if (NumberOfHoursWorked > 10)
                 bonus *= 2;
 
             if (bonus >= 200)
@@ -89,7 +163,7 @@ namespace WojteksCandyShop.HR
         public double CalculateWage()
         {
             WageCalculations wageCalculations = new WageCalculations();
-            double calculatedValue = wageCalculations.ComplexWageCalculation(wage, taxRate, 3, 42);
+            double calculatedValue = wageCalculations.ComplexWageCalculation(Wage, taxRate, 3, 42);
             return calculatedValue;
         }
 
@@ -102,30 +176,30 @@ namespace WojteksCandyShop.HR
         {
             double wageBeforTax = 0.0;
 
-            if (employeeType == EmployeeType.Manager)
+            if (EmployeeType == EmployeeType.Manager)
             {
-                wageBeforTax = numberOfHoursWorked * hourlyRate.Value * 1.25;
-                Console.WriteLine($"An extra was added since {firstName} is a manager.");
+                wageBeforTax = NumberOfHoursWorked * HourlyRate.Value * 1.25;
+                Console.WriteLine($"An extra was added since {FirstName} is a manager.");
             }
             else
             {
-                wageBeforTax = numberOfHoursWorked * hourlyRate.Value;
+                wageBeforTax = NumberOfHoursWorked * HourlyRate.Value;
             }
 
             double taxAmount = wageBeforTax * taxRate;
             wage = wageBeforTax - taxAmount;
 
 
-            Console.WriteLine($"{firstName} {lastName} has received a wage of {wage} for {numberOfHoursWorked} hour(s) worked.");
+            Console.WriteLine($"{firstName} {lastName} has received a wage of {Wage} for {NumberOfHoursWorked} hour(s) worked.");
             if (resetHours)
-                numberOfHoursWorked = 0;
+                NumberOfHoursWorked = 0;
 
-            return wage;
+            return Wage;
         }
         public void DisplayEmployeeDetails()
         {
-            Console.WriteLine($"First name: \t{firstName}\nLast name: \t{lastName}\nEmail: \t\t{email}" +
-                $"\nBirthday: \t{birthDay.ToShortDateString()}\nTax rate: \t{taxRate}.\n");
+            Console.WriteLine($"First name: \t{FirstName}\nLast name: \t{LastName}\nEmail: \t\t{Email}" +
+                $"\nBirthday: \t{BirthDay.ToShortDateString()}\nEmployee type: \t{EmployeeType}\nTax rate: \t{taxRate}.\n");
         }
     }
 }
