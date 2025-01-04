@@ -100,33 +100,33 @@ wojtek.DisplayEmployeeDetails();
 //Arrays
 
 // Integer arrays
-int[] sampleArray1 = new int[5];
+//int[] sampleArray1 = new int[5];
 
-int[] sampleArray2 = new int[] { 1, 2, 3, 4, 5, };
+//int[] sampleArray2 = new int[] { 1, 2, 3, 4, 5, };
 
-Console.WriteLine("Podaj liczbę pracowników do rejestracji.");
-int lenght = int.Parse(Console.ReadLine());
+//Console.WriteLine("Podaj liczbę pracowników do rejestracji.");
+//int lenght = int.Parse(Console.ReadLine());
 
-int[] employeeIds = new int[lenght];
+//int[] employeeIds = new int[lenght];
 
-for (int i = 0; i < lenght; i++)
-{
-    Console.WriteLine($"Podaj id {i + 1} pracownika.");
-    int id = int.Parse(Console.ReadLine());
-    employeeIds[i] = id;
-}
+//for (int i = 0; i < lenght; i++)
+//{
+//    Console.WriteLine($"Podaj id {i + 1} pracownika.");
+//    int id = int.Parse(Console.ReadLine());
+//    employeeIds[i] = id;
+//}
 
-for (int i = 0; i < employeeIds.Length; i++)
-{
-    Console.WriteLine($"ID {i + 1}: \t{employeeIds[i]}");
-}
+//for (int i = 0; i < employeeIds.Length; i++)
+//{
+//    Console.WriteLine($"ID {i + 1}: \t{employeeIds[i]}");
+//}
 
-Array.Sort(employeeIds);
-Console.WriteLine("Po posortowaniu:");
-for (int i = 0; i < employeeIds.Length; i++)
-{
-    Console.WriteLine($"ID {i + 1}: \t{employeeIds[i]}");
-}
+//Array.Sort(employeeIds);
+//Console.WriteLine("Po posortowaniu:");
+//for (int i = 0; i < employeeIds.Length; i++)
+//{
+//    Console.WriteLine($"ID {i + 1}: \t{employeeIds[i]}");
+//}
 
 
 //Array from methods
@@ -140,3 +140,64 @@ for (int i = 0; i < employeeIds.Length; i++)
 //    e.PerformWork(numberOfHoursWorked);
 //    e.ReceiveWage();
 //}
+
+//Collections - List
+List<int> employeeIds = new List<int>();
+
+employeeIds.Add(53);
+employeeIds.Add(6453);
+employeeIds.Add(4);
+employeeIds.Add(45);
+employeeIds.Add(7545);
+employeeIds.Add(34);
+//employeeIds.Add("string");
+int value = employeeIds.FirstOrDefault();
+
+if (value == 53)
+{
+    Console.WriteLine($"Employee ids has a {value} id.");
+}
+
+if (employeeIds.Contains(4))
+{
+    Console.WriteLine("Employee id contains number 4.");
+}
+else
+{
+    Console.WriteLine("There is no employee with id of 4.");
+}
+
+int currentAmountOfEmployees = employeeIds.Count;
+Console.WriteLine($"There are currently {currentAmountOfEmployees} employees at the firm.");
+
+var employeesArray = employeeIds.ToArray();
+
+employeeIds.Clear();
+int currentAmountOfEmployeesAfterRestructurization = employeeIds.Count;
+Console.WriteLine($"There are currently {currentAmountOfEmployeesAfterRestructurization} employees at the firm.");
+
+
+Console.WriteLine("Adding employees...");
+Console.WriteLine("-----------------\n");
+Console.WriteLine("How many employees IDs do you want to register?");
+int lenght = int.Parse(Console.ReadLine());
+
+for(int i = 0; i < lenght; i++)
+{
+    Console.WriteLine("Enter employee ID:");
+    int id = int.Parse(Console.ReadLine());
+    employeeIds.Add(id);
+}
+
+List<Employee> employees = new List<Employee>();
+employees.Add(wojtek);
+employees.Insert(0, kasia);
+employees.Add(mieczyslaw);
+employees.Add(basia);
+employees.Add(gosia);
+employees.Add(krzysztof);
+
+foreach(Employee e in employees)
+{
+    e.DisplayEmployeeDetails();
+}
