@@ -14,6 +14,9 @@ namespace WojteksCandyShop.HR
         private double? hourlyRate;
         private const int minimalWorkedHoursUnit = 1;
 
+        //Has-A relation
+        private Address address;
+
         private DateTime birthDay;
 
         public static double taxRate = 0.15;
@@ -66,6 +69,14 @@ namespace WojteksCandyShop.HR
         {
             get; set;
         }
+        public Address Address
+        {
+            get { return address; }
+            set
+            {
+                address = value;
+            }
+        }
         // End setitng properties
         //Second constractor
         public Employee(string firstName, string lastName, string email, DateTime birthDay) 
@@ -82,6 +93,17 @@ namespace WojteksCandyShop.HR
             Email = email;
             BirthDay = birthDay;
             HourlyRate = hourlyRate ?? 10;
+        }
+        public Employee(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate, string street, string houseNum, 
+            string city, string postalCode)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            BirthDay = birthDay;
+            HourlyRate = hourlyRate ?? 10;
+
+            Address = new Address(street, houseNum, city, postalCode);
         }
 
         public void PerformWork()
