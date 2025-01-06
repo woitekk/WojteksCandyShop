@@ -15,7 +15,7 @@ using WojteksCandyShop.HR;
 Console.WriteLine("Creating employee");
 Console.WriteLine("-----------------\n");
 
-Employee wojtek = new Employee("Wojtek", "Komowski", "test@test.pl", new DateTime(1982, 1, 7), 150);
+Employee wojtek = new Employee("Wojtek", "Komowski", "test@test.pl", new DateTime(1982, 1, 7), 150, "Piotrkowska", "4a", "Lodz", "91-084");
 
 string wojtekAsJson = wojtek.ConvertToJson();
 Console.WriteLine(wojtekAsJson);
