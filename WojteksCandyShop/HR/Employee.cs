@@ -12,11 +12,9 @@ namespace WojteksCandyShop.HR
         private int numberOfHoursWorked;
         private double wage;
         private double? hourlyRate;
-        const int minimalWorkedHoursUnit = 1;
+        private const int minimalWorkedHoursUnit = 1;
 
         private DateTime birthDay;
-
-        private EmployeeType employeeType;
 
         public static double taxRate = 0.15;
 
@@ -36,7 +34,7 @@ namespace WojteksCandyShop.HR
         public int NumberOfHoursWorked
         {
             get { return numberOfHoursWorked; }
-            private set
+            protected set
             {
                 numberOfHoursWorked = value;
             }
@@ -68,27 +66,22 @@ namespace WojteksCandyShop.HR
         {
             get; set;
         }
-        public EmployeeType EmployeeType
-        {
-            get; set;
-        }
         // End setitng properties
         //Second constractor
         public Employee(string firstName, string lastName, string email, DateTime birthDay) 
-            : this(firstName, lastName, email, birthDay, 0, EmployeeType.StoreManager)
+            : this(firstName, lastName, email, birthDay, 0)
         {
 
         }
 
         //Main constructor
-        public Employee(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate, EmployeeType employeeType)
+        public Employee(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate)
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
             BirthDay = birthDay;
             HourlyRate = hourlyRate ?? 10;
-            EmployeeType = employeeType;
         }
 
         public void PerformWork()
@@ -154,23 +147,13 @@ namespace WojteksCandyShop.HR
         }
         public double ReceiveWage(bool resetHours = true)
         {
-            double wageBeforTax = 0.0;
 
-            if (EmployeeType == EmployeeType.Manager)
-            {
-                wageBeforTax = NumberOfHoursWorked * HourlyRate.Value * 1.25;
-                Console.WriteLine($"An extra was added since {FirstName} is a manager.");
-            }
-            else
-            {
-                wageBeforTax = NumberOfHoursWorked * HourlyRate.Value;
-            }
-
+            double wageBeforTax = NumberOfHoursWorked * HourlyRate.Value;
             double taxAmount = wageBeforTax * taxRate;
-            wage = wageBeforTax - taxAmount;
-
+            Wage = wageBeforTax - taxAmount;
 
             Console.WriteLine($"{firstName} {lastName} has received a wage of {Wage} for {NumberOfHoursWorked} hour(s) worked.");
+           
             if (resetHours)
                 NumberOfHoursWorked = 0;
 
@@ -179,7 +162,7 @@ namespace WojteksCandyShop.HR
         public void DisplayEmployeeDetails()
         {
             Console.WriteLine($"First name: \t{FirstName}\nLast name: \t{LastName}\nEmail: \t\t{Email}" +
-                $"\nBirthday: \t{BirthDay.ToShortDateString()}\nEmployee type: \t{EmployeeType}\nTax rate: \t{taxRate}.\n");
+                $"\nBirthday: \t{BirthDay.ToShortDateString()}\nTax rate: \t{taxRate}.\n");
         }
     }
 }

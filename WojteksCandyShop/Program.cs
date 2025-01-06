@@ -15,7 +15,7 @@ using WojteksCandyShop.HR;
 Console.WriteLine("Creating employee");
 Console.WriteLine("-----------------\n");
 
-Employee wojtek = new Employee("Wojtek", "Komowski", "test@test.pl", new DateTime(1982, 1, 7), 150, EmployeeType.Manager);
+Employee wojtek = new Employee("Wojtek", "Komowski", "test@test.pl", new DateTime(1982, 1, 7), 150);
 
 string wojtekAsJson = wojtek.ConvertToJson();
 Console.WriteLine(wojtekAsJson);
@@ -46,16 +46,16 @@ builder.AppendLine(wojtek.FirstName);
 string employeeInfo = builder.ToString();
 Console.WriteLine(employeeInfo);
 
-StringBuilder builder2 = new StringBuilder();
+//StringBuilder builder2 = new StringBuilder();
 
-for(int i = 0; i < 15; i++)
-{
-    builder2.Append(i);
-    builder2.Append(", ");
-}
+//for(int i = 0; i < 15; i++)
+//{
+//    builder2.Append(i);
+//    builder2.Append(", ");
+//}
 
-string list = builder2.ToString();
-Console.WriteLine(list);
+//string list = builder2.ToString();
+//Console.WriteLine(list);
 
 //wojtek.DisplayEmployeeDetails();
 
@@ -67,12 +67,16 @@ Console.WriteLine(list);
 
 //double receivedWage = wojtek.ReceiveWage(true);
 
-var gosia = new Employee("Gosia", "Mlodawska", "lufa@lufa.pl", new DateTime(1988, 6, 15), 120, EmployeeType.Research);
-Employee basia = new("Basia", "Nowak", "mail@goo.com", new DateTime(1978, 7, 22), 180, EmployeeType.StoreManager);
-Employee krzysztof = new("Krzysztof", "Nowakowski", "mail@ktiorego.niema", new DateTime(1982, 3, 29), 180, EmployeeType.Research);
-Employee mieczyslaw = new("Mieczyslaw", "Nowawski", "mail45@ktiorego.niema", new DateTime(1987, 3, 29), null, EmployeeType.Sales);
-Employee kasia = new("Katarzyna", "Noski", "mail6543@ktiorego.niema", new DateTime(1992, 3, 15), null, EmployeeType.Sales);
-Employee wladek = new("Władysław", "Noski", "mail65ff43@ktiorego.niema", new DateTime(1988, 6, 14), null, EmployeeType.Sales);
+var gosia = new Employee("Gosia", "Mlodawska", "lufa@lufa.pl", new DateTime(1988, 6, 15), 90);
+Employee basia = new("Basia", "Nowak", "mail@goo.com", new DateTime(1978, 7, 22), 120);
+Manager krzysztof = new("Krzysztof", "Nowakowski", "mail@ktiorego.niema", new DateTime(1982, 3, 29), 180);
+Employee mieczyslaw = new("Mieczyslaw", "Nowawski", "mail45@ktiorego.niema", new DateTime(1987, 3, 29), null);
+Employee kasia = new("Katarzyna", "Noski", "mail6543@ktiorego.niema", new DateTime(1992, 3, 15), null);
+JuniorResearcher wladek = new("Władysław", "Noski", "mail65ff43@ktiorego.niema", new DateTime(1988, 6, 14), null);
+
+krzysztof.AttendManagementMeeting();
+wladek.ReasearchNewCandyTastes(2);
+wladek.ReasearchNewCandyTastes(5);
 
 //gosia.DisplayEmployeeDetails();
 //basia.DisplayEmployeeDetails();
@@ -177,17 +181,17 @@ int currentAmountOfEmployeesAfterRestructurization = employeeIds.Count;
 Console.WriteLine($"There are currently {currentAmountOfEmployeesAfterRestructurization} employees at the firm.");
 
 
-Console.WriteLine("Adding employees...");
-Console.WriteLine("-----------------\n");
-Console.WriteLine("How many employees IDs do you want to register?");
-int lenght = int.Parse(Console.ReadLine());
+//Console.WriteLine("Adding employees...");
+//Console.WriteLine("-----------------\n");
+//Console.WriteLine("How many employees IDs do you want to register?");
+//int lenght = int.Parse(Console.ReadLine());
 
-for(int i = 0; i < lenght; i++)
-{
-    Console.WriteLine("Enter employee ID:");
-    int id = int.Parse(Console.ReadLine());
-    employeeIds.Add(id);
-}
+//for(int i = 0; i < lenght; i++)
+//{
+//    Console.WriteLine("Enter employee ID:");
+//    int id = int.Parse(Console.ReadLine());
+//    employeeIds.Add(id);
+//}
 
 List<Employee> employees = new List<Employee>();
 employees.Add(wojtek);
