@@ -19,5 +19,12 @@ namespace WojteksCandyShop.HR
             NumberOfHoursWorked += 10;
             Console.WriteLine($"Manager {FirstName} {LastName} was on a meeting. The meeting which could be an email.");
         }
+        public override void GiveBonus()
+        {
+            if (NumberOfHoursWorked > 5)
+                Console.WriteLine($"Manager {FirstName} {LastName} received a management bonus of 500.");
+            else
+                Console.WriteLine($"Manager {FirstName} {LastName} received a management bonus of 250.");
+        }
     }
 }

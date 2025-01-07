@@ -37,14 +37,14 @@ Console.WriteLine(wojtekAsJson);
 //Console.WriteLine($"The minimum bonus is {minimumBonus}, the bonus tax is {bonusTax}. {wojtek.firstName} received bonus is {receivedBonus}");
 
 /* String builder */
-StringBuilder builder = new StringBuilder();
+//StringBuilder builder = new StringBuilder();
 
-builder.Append("Last name: ");
-builder.AppendLine(wojtek.LastName);
-builder.Append("First name: ");
-builder.AppendLine(wojtek.FirstName);
-string employeeInfo = builder.ToString();
-Console.WriteLine(employeeInfo);
+//builder.Append("Last name: ");
+//builder.AppendLine(wojtek.LastName);
+//builder.Append("First name: ");
+//builder.AppendLine(wojtek.FirstName);
+//string employeeInfo = builder.ToString();
+//Console.WriteLine(employeeInfo);
 
 //StringBuilder builder2 = new StringBuilder();
 
@@ -70,7 +70,7 @@ Console.WriteLine(employeeInfo);
 var gosia = new Employee("Gosia", "Mlodawska", "lufa@lufa.pl", new DateTime(1988, 6, 15), 90);
 Employee basia = new("Basia", "Nowak", "mail@goo.com", new DateTime(1978, 7, 22), 120);
 Manager krzysztof = new("Krzysztof", "Nowakowski", "mail@ktiorego.niema", new DateTime(1982, 3, 29), 180);
-Employee mieczyslaw = new("Mieczyslaw", "Nowawski", "mail45@ktiorego.niema", new DateTime(1987, 3, 29), null);
+Developer mieczyslaw = new("Mieczyslaw", "Nowawski", "mail45@ktiorego.niema", new DateTime(1987, 3, 29), 150, "Website");
 Employee kasia = new("Katarzyna", "Noski", "mail6543@ktiorego.niema", new DateTime(1992, 3, 15), null);
 JuniorResearcher wladek = new("Władysław", "Noski", "mail65ff43@ktiorego.niema", new DateTime(1988, 6, 14), null);
 
@@ -205,4 +205,6 @@ employees.Add(wladek);
 foreach(Employee e in employees)
 {
     e.DisplayEmployeeDetails();
+    e.GiveBonus();
 }
+
