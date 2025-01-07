@@ -22,5 +22,10 @@ namespace WojteksCandyShop.HR
             double? hourlyRate, string currentProject) : base(firstName, lastName, email, birthDay, hourlyRate)
         {
         }
+        public override void DisplayEmployeeDetails()
+        {
+            Console.WriteLine($"First name: \t{FirstName}\nLast name: \t{LastName}\nEmail: \t\t{Email}" +
+                $"\nBirthday: \t{BirthDay.ToShortDateString()}\nCurrent project: \t{CurrentProject}\nTax rate: \t{taxRate}.\n");
+        }
     }
 }
