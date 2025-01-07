@@ -19,7 +19,7 @@ namespace WojteksCandyShop.HR
             }
         }
         public Developer(string firstName, string lastName, string email, DateTime birthDay, 
-            double? hourlyRate) : base(firstName, lastName, email, birthDay, hourlyRate)
+            double? hourlyRate, string currentProject) : base(firstName, lastName, email, birthDay, hourlyRate)
         {
         }
     }
