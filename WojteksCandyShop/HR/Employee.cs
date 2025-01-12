@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace WojteksCandyShop.HR
 {
-    internal class Employee
+    internal class Employee: IEmployee
     {
         private string firstName;
         private string lastName;
@@ -189,6 +189,11 @@ namespace WojteksCandyShop.HR
         {
             Console.WriteLine($"First name: \t{FirstName}\nLast name: \t{LastName}\nEmail: \t\t{Email}" +
                 $"\nBirthday: \t{BirthDay.ToShortDateString()}\nTax rate: \t{taxRate}.\n");
+        }
+
+        public void GiveComplement()
+        {
+            Console.WriteLine($"You've done a great work, {FirstName}!");
         }
     }
 }
