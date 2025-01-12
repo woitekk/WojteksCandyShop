@@ -15,7 +15,7 @@ using WojteksCandyShop.HR;
 Console.WriteLine("Creating employee");
 Console.WriteLine("-----------------\n");
 
-Employee wojtek = new Employee("Wojtek", "Komowski", "test@test.pl", new DateTime(1982, 1, 7), 150, "Piotrkowska", "4a", "Lodz", "91-084");
+IEmployee wojtek = new Employee("Wojtek", "Komowski", "test@test.pl", new DateTime(1982, 1, 7), 150, "Piotrkowska", "4a", "Lodz", "91-084");
 
 string wojtekAsJson = wojtek.ConvertToJson();
 Console.WriteLine(wojtekAsJson);
@@ -67,16 +67,16 @@ Console.WriteLine(wojtekAsJson);
 
 //double receivedWage = wojtek.ReceiveWage(true);
 
-var gosia = new Employee("Gosia", "Mlodawska", "lufa@lufa.pl", new DateTime(1988, 6, 15), 90);
-Employee basia = new("Basia", "Nowak", "mail@goo.com", new DateTime(1978, 7, 22), 120);
-Manager krzysztof = new("Krzysztof", "Nowakowski", "mail@ktiorego.niema", new DateTime(1982, 3, 29), 180);
-Developer mieczyslaw = new("Mieczyslaw", "Nowawski", "mail45@ktiorego.niema", new DateTime(1987, 3, 29), 150, "Website");
-Employee kasia = new("Katarzyna", "Noski", "mail6543@ktiorego.niema", new DateTime(1992, 3, 15), null);
-JuniorResearcher wladek = new("Władysław", "Noski", "mail65ff43@ktiorego.niema", new DateTime(1988, 6, 14), null);
+IEmployee gosia = new StoreManager("Gosia", "Mlodawska", "lufa@lufa.pl", new DateTime(1988, 6, 15), 90);
+IEmployee basia = new Researcher("Basia", "Nowak", "mail@goo.com", new DateTime(1978, 7, 22), 120);
+IEmployee krzysztof = new Manager("Krzysztof", "Nowakowski", "mail@ktiorego.niema", new DateTime(1982, 3, 29), 180);
+IEmployee mieczyslaw = new Developer("Mieczyslaw", "Nowawski", "mail45@ktiorego.niema", new DateTime(1987, 3, 29), 150, "Website");
+IEmployee kasia = new Employee("Katarzyna", "Noski", "mail6543@ktiorego.niema", new DateTime(1992, 3, 15), null);
+IEmployee wladek = new JuniorResearcher("Władysław", "Noski", "mail65ff43@ktiorego.niema", new DateTime(1988, 6, 14), null); 
 
-krzysztof.AttendManagementMeeting();
-wladek.ReasearchNewCandyTastes(2);
-wladek.ReasearchNewCandyTastes(5);
+//krzysztof.AttendManagementMeeting();
+//wladek.ReasearchNewCandyTastes(2);
+//wladek.ReasearchNewCandyTastes(5);
 
 //gosia.DisplayEmployeeDetails();
 //basia.DisplayEmployeeDetails();
@@ -193,7 +193,7 @@ Console.WriteLine($"There are currently {currentAmountOfEmployeesAfterRestructur
 //    employeeIds.Add(id);
 //}
 
-List<Employee> employees = new List<Employee>();
+List<IEmployee> employees = new List<IEmployee>();
 employees.Add(wojtek);
 employees.Insert(0, kasia);
 employees.Add(mieczyslaw);
@@ -206,5 +206,6 @@ foreach(Employee e in employees)
 {
     e.DisplayEmployeeDetails();
     e.GiveBonus();
+    e.GiveComplement();
 }
 
