@@ -188,7 +188,7 @@ namespace WojteksCandyShop.HR
         public virtual void DisplayEmployeeDetails()
         {
             Console.WriteLine($"First name: \t{FirstName}\nLast name: \t{LastName}\nEmail: \t\t{Email}" +
-                $"\nBirthday: \t{BirthDay.ToShortDateString()}\nTax rate: \t{taxRate}.\n");
+                $"\nBirthday: \t{BirthDay.ToShortDateString()}\nTax rate: \t{taxRate}\n");
         }
 
         public void GiveComplement()
