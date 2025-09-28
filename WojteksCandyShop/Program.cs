@@ -1,7 +1,64 @@
 ﻿
+using System;
 using System.Text;
+using WojteksCandyShop;
 using WojteksCandyShop.Accounting;
 using WojteksCandyShop.HR;
+
+//Full Console program
+List<Employee> employees = new List<Employee>();
+
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine("**********************");
+Console.WriteLine("Wojtek's Candy Shop Employee app");
+Console.WriteLine("**********************");
+Console.ForegroundColor = ConsoleColor.White;
+
+string userSelection;
+Console.ForegroundColor = ConsoleColor.Blue;
+
+Utilities.CheckForExistingEmployeeFile();
+
+do
+{
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine($"Loaded {employees.Count} employee(s)\n\n");
+
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("**********************");
+    Console.WriteLine("Select an action.");
+    Console.WriteLine("**********************");
+
+    Console.WriteLine("1: Register employee");
+    Console.WriteLine("2: View all employees");
+    Console.WriteLine("3: Save data");
+    Console.WriteLine("4: Load data");
+    Console.WriteLine("9: Quit app");
+    Console.WriteLine("Your selection: ");
+
+    userSelection = Console.ReadLine();
+
+    switch (userSelection)
+    {
+        case "1":
+            Utilities.RegisterEmployee(employees);
+            break;
+        case "2":
+            Utilities.ViewAllEmployees(employees);
+            break;
+        case "3":
+            Utilities.SaveEmployee(employees);
+            break;
+        case "4":
+            Utilities.LoadEmployee(employees);
+            break;
+        case "9": break;
+        default:
+            Console.WriteLine("Invalid selection. Try again.");
+            break;
+    }
+} while (userSelection != "9");
+
 
 //int a = 42;
 //int aCopy = a;
@@ -12,13 +69,13 @@ using WojteksCandyShop.HR;
 
 
 
-Console.WriteLine("Creating employee");
-Console.WriteLine("-----------------\n");
+//Console.WriteLine("Creating employee");
+//Console.WriteLine("-----------------\n");
 
-IEmployee wojtek = new Employee("Wojtek", "Komowski", "test@test.pl", new DateTime(1982, 1, 7), 150, "Piotrkowska", "4a", "Lodz", "91-084");
+//IEmployee wojtek = new Employee("Wojtek", "Komowski", "test@test.pl", new DateTime(1982, 1, 7), 150, "Piotrkowska", "4a", "Lodz", "91-084");
 
-string wojtekAsJson = wojtek.ConvertToJson();
-Console.WriteLine(wojtekAsJson);
+//string wojtekAsJson = wojtek.ConvertToJson();
+//Console.WriteLine(wojtekAsJson);
 
 //var testEmployee = wojtek;
 //testEmployee.firstName = "Bolek";
@@ -67,12 +124,12 @@ Console.WriteLine(wojtekAsJson);
 
 //double receivedWage = wojtek.ReceiveWage(true);
 
-IEmployee gosia = new StoreManager("Gosia", "Mlodawska", "lufa@lufa.pl", new DateTime(1988, 6, 15), 90);
-IEmployee basia = new Researcher("Basia", "Nowak", "mail@goo.com", new DateTime(1978, 7, 22), 120);
-IEmployee krzysztof = new Manager("Krzysztof", "Nowakowski", "mail@ktiorego.niema", new DateTime(1982, 3, 29), 180);
-IEmployee mieczyslaw = new Developer("Mieczyslaw", "Nowawski", "mail45@ktiorego.niema", new DateTime(1987, 3, 29), 150, "Website");
-IEmployee kasia = new Employee("Katarzyna", "Noski", "mail6543@ktiorego.niema", new DateTime(1992, 3, 15), null);
-IEmployee wladek = new JuniorResearcher("Władysław", "Noski", "mail65ff43@ktiorego.niema", new DateTime(1988, 6, 14), null); 
+//IEmployee gosia = new StoreManager("Gosia", "Mlodawska", "lufa@lufa.pl", new DateTime(1988, 6, 15), 90);
+//IEmployee basia = new Researcher("Basia", "Nowak", "mail@goo.com", new DateTime(1978, 7, 22), 120);
+//IEmployee krzysztof = new Manager("Krzysztof", "Nowakowski", "mail@ktiorego.niema", new DateTime(1982, 3, 29), 180);
+//IEmployee mieczyslaw = new Developer("Mieczyslaw", "Nowawski", "mail45@ktiorego.niema", new DateTime(1987, 3, 29), 150, "Website");
+//IEmployee kasia = new Employee("Katarzyna", "Noski", "mail6543@ktiorego.niema", new DateTime(1992, 3, 15), null);
+//IEmployee wladek = new JuniorResearcher("Władysław", "Noski", "mail65ff43@ktiorego.niema", new DateTime(1988, 6, 14), null); 
 
 //krzysztof.AttendManagementMeeting();
 //wladek.ReasearchNewCandyTastes(2);
@@ -91,15 +148,15 @@ IEmployee wladek = new JuniorResearcher("Władysław", "Noski", "mail65ff43@ktio
 //task.hours = 2;
 //task.PerformWorkTask();
 
-#region First Run Wojtek
+//#region First Run Wojtek
 
-wojtek.PerformWork();
-wojtek.PerformWork(5);
-wojtek.PerformWork();
-wojtek.ReceiveWage();
-wojtek.DisplayEmployeeDetails();
+//wojtek.PerformWork();
+//wojtek.PerformWork(5);
+//wojtek.PerformWork();
+//wojtek.ReceiveWage();
+//wojtek.DisplayEmployeeDetails();
 
-#endregion
+//#endregion
 
 //Arrays
 
@@ -146,39 +203,39 @@ wojtek.DisplayEmployeeDetails();
 //}
 
 //Collections - List
-List<int> employeeIds = new List<int>();
+//List<int> employeeIds = new List<int>();
 
-employeeIds.Add(53);
-employeeIds.Add(6453);
-employeeIds.Add(4);
-employeeIds.Add(45);
-employeeIds.Add(7545);
-employeeIds.Add(34);
-//employeeIds.Add("string");
-int value = employeeIds.FirstOrDefault();
+//employeeIds.Add(53);
+//employeeIds.Add(6453);
+//employeeIds.Add(4);
+//employeeIds.Add(45);
+//employeeIds.Add(7545);
+//employeeIds.Add(34);
+////employeeIds.Add("string");
+//int value = employeeIds.FirstOrDefault();
 
-if (value == 53)
-{
-    Console.WriteLine($"Employee ids has a {value} id.");
-}
+//if (value == 53)
+//{
+//    Console.WriteLine($"Employee ids has a {value} id.");
+//}
 
-if (employeeIds.Contains(4))
-{
-    Console.WriteLine("Employee id contains number 4.");
-}
-else
-{
-    Console.WriteLine("There is no employee with id of 4.");
-}
+//if (employeeIds.Contains(4))
+//{
+//    Console.WriteLine("Employee id contains number 4.");
+//}
+//else
+//{
+//    Console.WriteLine("There is no employee with id of 4.");
+//}
 
-int currentAmountOfEmployees = employeeIds.Count;
-Console.WriteLine($"There are currently {currentAmountOfEmployees} employees at the firm.");
+//int currentAmountOfEmployees = employeeIds.Count;
+//Console.WriteLine($"There are currently {currentAmountOfEmployees} employees at the firm.");
 
-var employeesArray = employeeIds.ToArray();
+//var employeesArray = employeeIds.ToArray();
 
-employeeIds.Clear();
-int currentAmountOfEmployeesAfterRestructurization = employeeIds.Count;
-Console.WriteLine($"There are currently {currentAmountOfEmployeesAfterRestructurization} employees at the firm.");
+//employeeIds.Clear();
+//int currentAmountOfEmployeesAfterRestructurization = employeeIds.Count;
+//Console.WriteLine($"There are currently {currentAmountOfEmployeesAfterRestructurization} employees at the firm.");
 
 
 //Console.WriteLine("Adding employees...");
@@ -193,19 +250,19 @@ Console.WriteLine($"There are currently {currentAmountOfEmployeesAfterRestructur
 //    employeeIds.Add(id);
 //}
 
-List<IEmployee> employees = new List<IEmployee>();
-employees.Add(wojtek);
-employees.Insert(0, kasia);
-employees.Add(mieczyslaw);
-employees.Add(basia);
-employees.Add(gosia);
-employees.Add(krzysztof);   
-employees.Add(wladek);
+//List<IEmployee> employees = new List<IEmployee>();
+//employees.Add(wojtek);
+//employees.Insert(0, kasia);
+//employees.Add(mieczyslaw);
+//employees.Add(basia);
+//employees.Add(gosia);
+//employees.Add(krzysztof);   
+//employees.Add(wladek);
 
-foreach(Employee e in employees)
-{
-    e.DisplayEmployeeDetails();
-    e.GiveBonus();
-    e.GiveComplement();
-}
+//foreach(Employee e in employees)
+//{
+//    e.DisplayEmployeeDetails();
+//    e.GiveBonus();
+//    e.GiveComplement();
+//}
 
